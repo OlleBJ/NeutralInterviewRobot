@@ -23,6 +23,14 @@ val Start : State = state(Interaction) {
 //            { furhat.gesture(Gestures.Nod) }
 //        )
 //    }
+    onResponse<BadAndYou>{
+        furhat.say("I am a robot, I do not have any feelings.")
+        goto(Problem)
+    }
+    onResponse<HowRU>{
+        furhat.say("I am a robot, I do not have any feelings.")
+        goto(Visitors)
+    }
 
     onResponse<Good>{
         furhat.say {
