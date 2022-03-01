@@ -8,21 +8,12 @@ import furhatos.gestures.Gestures
 val Start : State = state(Interaction) {
 
     onEntry {
-//        furhat.gesture(Gestures.Smile(duration = 5.0, strength = 2.0))
         furhat.ask({
             +"Hello!"
             +"How are you today?" })
     }
 
-//    onInterimResponse(endSil = 500) {
-//        // We give some feedback to the user, "okay" or a nod gesture.
-//        random (
-//            // Note that we need to set async = true, since we are in an instant trigger
-//            { furhat.say("okay", async = true) },
-//            // Gestures are async per default, so no need to set the flag
-//            { furhat.gesture(Gestures.Nod) }
-//        )
-//    }
+
     onResponse<BadAndYou>{
         furhat.say("I am a robot, I do not have any feelings.")
         goto(Problem)

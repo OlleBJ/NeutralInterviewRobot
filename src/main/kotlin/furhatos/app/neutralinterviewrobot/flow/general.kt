@@ -12,6 +12,7 @@ val Idle: State = state {
 
     init {
         furhat.voice = PollyVoice.Amy()
+        furhat.param.endSilTimeout = 1000
         furhat.setTexture("Isabel")
         furhat.setDefaultMicroexpression(blinking = true, facialMovements= false, eyeMovements = true)
         furhat.userSpeechStartGesture = listOf()
