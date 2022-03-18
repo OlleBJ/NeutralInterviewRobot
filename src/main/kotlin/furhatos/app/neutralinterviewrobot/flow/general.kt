@@ -3,19 +3,20 @@ package furhatos.app.neutralinterviewrobot.flow
 import furhatos.autobehavior.setDefaultMicroexpression
 import furhatos.flow.kotlin.*
 import furhatos.autobehavior.*
-
-import furhatos.flow.kotlin.voice.PollyNeuralVoice
 import furhatos.flow.kotlin.voice.PollyVoice
-import furhatos.util.*
 
 val Idle: State = state {
 
     init {
+        // set the face and voice of the robot and tweak end silence
         furhat.voice = PollyVoice.Amy()
-        furhat.param.endSilTimeout = 1000
+        furhat.param.endSilTimeout = 1000   // increased from default 800ms
         furhat.setTexture("Isabel")
+        // remove facial movements from micro expressions to make more neutral
         furhat.setDefaultMicroexpression(blinking = true, facialMovements= false, eyeMovements = true)
+        // Make no gesture at speech start (empty list):
         furhat.userSpeechStartGesture = listOf()
+        // Make no gesture at prominence (empty list):
         furhat.prominenceGesture = listOf()
 
 

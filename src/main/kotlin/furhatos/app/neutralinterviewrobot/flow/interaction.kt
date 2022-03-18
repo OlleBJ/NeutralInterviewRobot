@@ -3,8 +3,8 @@ package furhatos.app.neutralinterviewrobot.flow
 import furhatos.app.neutralinterviewrobot.nlu.*
 import furhatos.nlu.common.*
 import furhatos.flow.kotlin.*
-import furhatos.gestures.Gestures
 
+// initial state of the interaction
 val Start : State = state(Interaction) {
 
     onEntry {
@@ -39,7 +39,7 @@ val Start : State = state(Interaction) {
         goto(Visitors)
     }
 }
-
+// optional state, accessible through negative response
 val Problem : State = state(Interaction){
     onEntry{
         furhat.ask("What is wrong?")
@@ -58,6 +58,7 @@ val Problem : State = state(Interaction){
     }
 }
 
+// optional state, accessible through problem state
 val Family : State = state(Interaction){
     onEntry{
         furhat.ask("I see. Would you like to call your family?")
@@ -74,6 +75,7 @@ val Family : State = state(Interaction){
     }
 }
 
+// optional state, accessible through problem state
 val Doctor : State = state(Interaction){
     onEntry{
         furhat.ask("I see. Would you like to see a doctor?")
@@ -90,6 +92,7 @@ val Doctor : State = state(Interaction){
     }
 }
 
+// second state in core interaction
 val Visitors : State = state(Interaction){
     onEntry{
         delay(1000)
@@ -103,6 +106,7 @@ val Visitors : State = state(Interaction){
     }
 }
 
+// branch state
 val HadVisitors : State = state(Interaction){
     onEntry{
         furhat.ask("Did you have a good time?")
@@ -118,6 +122,7 @@ val HadVisitors : State = state(Interaction){
     }
 }
 
+// branch state
 val HadNoVisitors : State = state(Interaction){
     onEntry{
         furhat.ask("Would you like to have visits more often?")
@@ -133,6 +138,7 @@ val HadNoVisitors : State = state(Interaction){
     }
 }
 
+// third state in core interaction
 val Exercise : State = state(Interaction){
     onEntry{
         delay(1000)
@@ -150,6 +156,7 @@ val Exercise : State = state(Interaction){
     }
 }
 
+// branch state
 val WhatExercise: State = state(Interaction){
     onEntry{
         furhat.ask("What did you do?")
@@ -160,6 +167,7 @@ val WhatExercise: State = state(Interaction){
     }
 }
 
+// branch state
 val WalkWithStaff: State = state(Interaction){
     onEntry{
         furhat.ask("Would you like to take a walk with someone from the staff?")
@@ -174,6 +182,7 @@ val WalkWithStaff: State = state(Interaction){
     }
 }
 
+// fourth state in core interaction
 val Sleep : State = state(Interaction){
     onEntry{
         delay(1000)
@@ -188,6 +197,7 @@ val Sleep : State = state(Interaction){
     }
 }
 
+// branch state
 val BadSleep : State = state(Interaction){
     onEntry{
         furhat.ask("Do you think it is temporary or should I contact the " +
@@ -203,6 +213,7 @@ val BadSleep : State = state(Interaction){
     }
 }
 
+// fifth state in core interaction
 val Olympics : State = state(Interaction){
     onEntry{
         delay(1000)
@@ -217,6 +228,7 @@ val Olympics : State = state(Interaction){
     }
 }
 
+// branch state
 val NoOlympics : State = state(Interaction){
     onEntry{
         furhat.ask("Do you want to know how many medals Sweden won?")
@@ -231,6 +243,7 @@ val NoOlympics : State = state(Interaction){
     }
 }
 
+// sixth state in core interaction
 val Food : State = state(Interaction){
     onEntry{
         delay(1000)
@@ -245,6 +258,7 @@ val Food : State = state(Interaction){
     }
 }
 
+// branch state
 val BadFood : State = state(Interaction){
     onEntry{
         furhat.ask("Ok! Does this affect your appetite?")
@@ -255,6 +269,7 @@ val BadFood : State = state(Interaction){
 
 }
 
+// branch state
 val RequestMeal : State = state(Interaction){
     onEntry{
         furhat.ask("I see. Would you like to request any specific meal?")
@@ -268,6 +283,7 @@ val RequestMeal : State = state(Interaction){
     }
 }
 
+// branch state
 val FoodOrder : State = state(Interaction){
     onEntry{
         furhat.ask("Ok. What would you like to have?")
@@ -279,6 +295,7 @@ val FoodOrder : State = state(Interaction){
 
 }
 
+// seventh state in core interaction
 val Activity : State = state(Interaction){
     onEntry{
         delay(1000)
@@ -302,7 +319,7 @@ val Activity : State = state(Interaction){
     }
 }
 
-
+// eighth state in core interaction
 val Game : State = state(Interaction){
     onEntry{
         delay(1000)
@@ -330,7 +347,7 @@ val Game : State = state(Interaction){
     }
 }
 
-
+// ninth and final state in core interaction
 val EndInterview : State = state(Interaction){
     onEntry{
         delay(1000)
